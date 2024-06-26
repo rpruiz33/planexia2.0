@@ -1243,6 +1243,7 @@ section {
   padding: 0 0 10px 36px;
   line-height: 28px;
   font-size: 14px;
+  color:white;
 }
 
 #contact .php-email-form .error-message {
