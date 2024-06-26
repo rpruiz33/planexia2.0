@@ -1480,9 +1480,9 @@ section {
 #footer .credits a:hover {
   color: #f1f7ff;
 }
-@media (max-width :425px){
+@media  (max-width :425px){
   .cuatro{
-    width:400px ;
+    width:200px ;
     
     }
 }
