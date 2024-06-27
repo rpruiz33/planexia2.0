@@ -778,36 +778,7 @@ Te ayudamos con:
                 </div>
               </form>
             
-              <script>
-                $(document).ready(function() {
-                  $("form.php-email-form").on("submit", function(event) {
-                    event.preventDefault(); // Evita el comportamiento por defecto del formulario
-            
-                    var form = $(this);
-                    var url = form.attr("action");
-            
-                    $.ajax({
-                      type: "POST",
-                      url: url,
-                      data: form.serialize(), // Serializa los datos del formulario
-                      beforeSend: function() {
-                        $(".loading").show(); // Muestra el mensaje de cargando
-                        $(".sent-message").hide(); // Oculta el mensaje de éxito
-                        $(".error-message").hide(); // Oculta el mensaje de error
-                      },
-                      success: function(response) {
-                        $(".loading").hide(); // Oculta el mensaje de cargando
-                        $(".sent-message").show(); // Muestra el mensaje de éxito
-                        form[0].reset(); // Reinicia el formulario
-                      },
-                      error: function(response) {
-                        $(".loading").hide(); // Oculta el mensaje de cargando
-                        $(".error-message").show(); // Muestra un mensaje de error
-                      }
-                    });
-                  });
-                });
-              </script>
+              
             
               
             </div>
@@ -901,7 +872,6 @@ Te ayudamos con:
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
  
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <!-- <script>
     $(document).ready(function() {
       $("form.php-email-form").on("submit", function(event) {
