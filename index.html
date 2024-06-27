@@ -749,7 +749,7 @@ Te ayudamos con:
             </div>
 
             <div class="form">
-              <form action="https://formsubmit.co/planexia.sa@gmail.com" method="POST" role="form" class="php-email-form"style="margin: 0% 0% 0% -95px;">
+              <form action="https://formsubmit.co/planexia.sa@gmail.com" method="POST" role="form" class="php-email-form" style="margin: 0% 0% 0% -95px;">
                 <div class="row">
                   <div class="form-group col-lg-6">
                     <input type="text" name="name" class="form-control" id="name" placeholder="Su nombre" required>
@@ -765,14 +765,13 @@ Te ayudamos con:
                   <textarea class="form-control" name="message" rows="5" placeholder="mensaje" required></textarea>
                 </div>
                 <div class="my-3">
-                  <div class="loading">Cargando</div>
-                  <!-- <div class="error-message"></div> -->
-                  <div class="sent-message">Su mensaje se envio con exitot. Muchas gracias!</div>
+                  <div class="loading" style="display:none;">Cargando</div>
+                  <!-- <div class="error-message" style="display:none;"></div> -->
+                  <div class="sent-message" style="display:none;">Su mensaje se envio con éxito. Muchas gracias!</div>
                 </div>
-                <div class="text-center"><button type="submit" title="Send Message">Enviar mensaje</button>
-              
-              </div>
+                <div class="text-center"><button type="submit" title="Send Message">Enviar mensaje</button></div>
               </form>
+              
             </div>
           </div>
 
@@ -864,7 +863,36 @@ Te ayudamos con:
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
-
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $("form.php-email-form").on("submit", function(event) {
+        event.preventDefault(); // Evita el comportamiento por defecto del formulario
+    
+        var form = $(this);
+        var url = form.attr("action");
+    
+        $.ajax({
+          type: "POST",
+          url: url,
+          data: form.serialize(), // Serializa los datos del formulario
+          beforeSend: function() {
+            $(".loading").show(); // Muestra el mensaje de cargando
+            $(".sent-message").hide(); // Oculta el mensaje de éxito
+          },
+          success: function(response) {
+            $(".loading").hide(); // Oculta el mensaje de cargando
+            $(".sent-message").show(); // Muestra el mensaje de éxito
+            form[0].reset(); // Reinicia el formulario
+          },
+          error: function(response) {
+            $(".loading").hide(); // Oculta el mensaje de cargando
+            $(".error-message").show().text("Hubo un error, por favor intente de nuevo."); // Muestra un mensaje de error
+          }
+        });
+      });
+    });
+    </script>
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
 
