@@ -777,7 +777,43 @@ Te ayudamos con:
                   <button type="submit" title="Send Message">Enviar mensaje</button>
                 </div>
               </form>
-            
+              <script>
+                document.querySelector('.php-email-form').addEventListener('submit', function(event) {
+                    event.preventDefault(); // Prevenir el comportamiento por defecto del formulario
+                    var form = this;
+                
+                    // Mostrar el mensaje de carga
+                    document.querySelector('.loading').style.display = 'block';
+                
+                    // Enviar el formulario usando fetch
+                    fetch(form.action, {
+                        method: form.method,
+                        body: new FormData(form),
+                    })
+                    .then(function(response) {
+                        // Ocultar el mensaje de carga
+                        document.querySelector('.loading').style.display = 'none';
+                        
+                        // Mostrar el mensaje de éxito
+                        if (response.ok) {
+                            document.querySelector('.sent-message').style.display = 'block';
+                
+                            // Redirigir o refrescar la página después de un breve retraso
+                            setTimeout(function() {
+                                window.location.reload();
+                            }, 2000); // Esperar 2 segundos antes de refrescar
+                        } else {
+                            document.querySelector('.error-message').style.display = 'block';
+                        }
+                    })
+                    .catch(function(error) {
+                        // Ocultar el mensaje de carga y mostrar el mensaje de error
+                        document.querySelector('.loading').style.display = 'none';
+                        document.querySelector('.error-message').style.display = 'block';
+                    });
+                });
+                </script>
+                
               
             
               
