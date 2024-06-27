@@ -750,26 +750,64 @@ Te ayudamos con:
             </div>
 
             <div class="form">
-              <form action="send_email.php" method="POST" class="php-email-form" style="margin: 0% 0% 0% -95px;">
+              <form action="https://formsubmit.co/planexia.sa@gmail.com" method="POST" role="form" class="php-email-form" style="margin: 0% 0% 0% -95px;">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_next" value="https://tu-dominio.com/gracias.html"> <!-- Opcional: URL de redirección después del envío -->
+            
                 <div class="row">
-                    <div class="form-group col-lg-6">
-                        <input type="text" name="name" class="form-control" id="name" placeholder="Su nombre" required>
-                    </div>
-                    <div class="form-group col-lg-6 mt-3 mt-lg-0">
-                        <input type="email" class="form-control" name="email" id="email" placeholder="Su Email" required>
-                    </div>
+                  <div class="form-group col-lg-6">
+                    <input type="text" name="name" class="form-control" id="name" placeholder="Su nombre" required>
+                  </div>
+                  <div class="form-group col-lg-6 mt-3 mt-lg-0">
+                    <input type="email" class="form-control" name="email" id="email" placeholder="Su Email" required>
+                  </div>
                 </div>
                 <div class="form-group mt-3">
-                    <input type="text" class="form-control" name="subject" id="subject" placeholder="Asunto" required>
+                  <input type="text" class="form-control" name="subject" id="subject" placeholder="Asunto" required>
                 </div>
                 <div class="form-group mt-3">
-                    <textarea class="form-control" name="message" rows="5" placeholder="mensaje" required></textarea>
+                  <textarea class="form-control" name="message" rows="5" placeholder="mensaje" required></textarea>
                 </div>
                 <div class="my-3">
-                    <div class="sent-message" style="display:none;">Su mensaje se envió con éxito. ¡Muchas gracias!</div>
+                  <div class="loading">Cargando</div>
+                  <div class="error-message">Hubo un error, por favor intente de nuevo.</div>
+                  <div class="sent-message">Su mensaje se envío con éxito. ¡Muchas gracias!</div>
                 </div>
-                <div class="text-center"><button type="submit" title="Send Message">Enviar mensaje</button></div>
-            </form>
+                <div class="text-center">
+                  <button type="submit" title="Send Message">Enviar mensaje</button>
+                </div>
+              </form>
+            
+              <script>
+                $(document).ready(function() {
+                  $("form.php-email-form").on("submit", function(event) {
+                    event.preventDefault(); // Evita el comportamiento por defecto del formulario
+            
+                    var form = $(this);
+                    var url = form.attr("action");
+            
+                    $.ajax({
+                      type: "POST",
+                      url: url,
+                      data: form.serialize(), // Serializa los datos del formulario
+                      beforeSend: function() {
+                        $(".loading").show(); // Muestra el mensaje de cargando
+                        $(".sent-message").hide(); // Oculta el mensaje de éxito
+                        $(".error-message").hide(); // Oculta el mensaje de error
+                      },
+                      success: function(response) {
+                        $(".loading").hide(); // Oculta el mensaje de cargando
+                        $(".sent-message").show(); // Muestra el mensaje de éxito
+                        form[0].reset(); // Reinicia el formulario
+                      },
+                      error: function(response) {
+                        $(".loading").hide(); // Oculta el mensaje de cargando
+                        $(".error-message").show(); // Muestra un mensaje de error
+                      }
+                    });
+                  });
+                });
+              </script>
             
               
             </div>
