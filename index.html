@@ -817,85 +817,69 @@ Te ayudamos con:
 
             <div class="form">
               <form action="https://formsubmit.co/planexia.sa@gmail.com" method="POST" role="form" class="php-email-form">
-                  <input type="hidden" name="_captcha" value="false">
-                  <input type="hidden" name="_next" value="https://rpruiz33.github.io/planexia2.0/">
-                  <input type="hidden" name="_template" value="table">
-                  <div class="row">
-                      <div class="form-group col-lg-6">
-                          <input type="text" name="name" class="form-control" id="name" placeholder="Su nombre" required>
-                      </div>
-                      <div class="form-group col-lg-6">
-                          <input type="email" class="form-control" name="email" id="email" placeholder="Su Email" required>
-                      </div>
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_next" value="https://rpruiz33.github.io/planexia2.0/">
+                
+                <div class="row">
+                  <div class="form-group col-lg-6">
+                    <input type="text" name="name" class="form-control" id="name" placeholder="Su nombre" required>
                   </div>
-                  <div class="form-group">
-                      <input type="text" class="form-control" name="subject" id="subject" placeholder="Asunto" required>
+                  <div class="form-group col-lg-6">
+                    <input type="email" class="form-control" name="email" id="email" placeholder="Su Email" required>
                   </div>
-                  <div class="form-group">
-                      <textarea class="form-control" name="message" rows="5" placeholder="mensaje" required></textarea>
-                  </div>
-                  <div class="my-3">
-                      <div class="loading">Cargando</div>
-                      <div class="error-message">Hubo un error, por favor intente de nuevo.</div>
-                      <div class="sent-message">Su mensaje se envió con éxito. ¡Muchas gracias!</div>
-                  </div>
-                  <div class="text-center">
-                      <button type="submit" title="Send Message">Enviar mensaje</button>
-                  </div>
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control" name="subject" id="subject" placeholder="Asunto" required>
+                </div>
+                <div class="form-group">
+                  <textarea class="form-control" name="message" rows="5" placeholder="mensaje" required></textarea>
+                </div>
+                <div class="my-3">
+                  <div class="loading">Cargando</div>
+                  <div class="error-message">Hubo un error, por favor intente de nuevo.</div>
+                  <div class="sent-message">Su mensaje se envió con éxito. ¡Muchas gracias!</div>
+                </div>
+                <div class="text-center">
+                  <button type="submit" title="Send Message">Enviar mensaje</button>
+                </div>
               </form>
-          </div>
-          <script>
-              document.querySelector('.php-email-form').addEventListener('submit', function(event) {
-                  event.preventDefault(); // Prevenir el comportamiento por defecto del formulario
-                  var form = this;
-          
-                  // Obtener la fecha y hora actuales ajustadas a la zona horaria de Argentina
-                  var now = new Date();
-                  var argentinaTimeOffset = -3; // Argentina está en UTC-3
-                  now.setHours(now.getHours() + argentinaTimeOffset);
-          
-                  // Formatear la fecha y hora
-                  var formattedDate = now.toISOString().slice(0, 19).replace("T", " ");
-          
-                  // Crear un campo oculto para la fecha y hora ajustadas
-                  var hiddenInput = document.createElement('input');
-                  hiddenInput.type = 'hidden';
-                  hiddenInput.name = 'submission_time';
-                  hiddenInput.value = formattedDate;
-                  form.appendChild(hiddenInput);
-          
-                  // Mostrar el mensaje de carga
-                  document.querySelector('.loading').style.display = 'block';
-          
-                  // Enviar el formulario usando fetch
-                  fetch(form.action, {
-                      method: form.method,
-                      body: new FormData(form),
-                  })
-                  .then(function(response) {
-                      // Ocultar el mensaje de carga
-                      document.querySelector('.loading').style.display = 'none';
-                      
-                      // Mostrar el mensaje de éxito
-                      if (response.ok) {
-                          document.querySelector('.sent-message').style.display = 'block';
-          
-                          // Redirigir o refrescar la página después de un breve retraso
-                          setTimeout(function() {
-                              window.location.reload();
-                          }, 2000); // Esperar 2 segundos antes de refrescar
-                      } else {
-                          document.querySelector('.error-message').style.display = 'block';
-                      }
-                  })
-                  .catch(function(error) {
-                      // Ocultar el mensaje de carga y mostrar el mensaje de error
-                      document.querySelector('.loading').style.display = 'none';
-                      document.querySelector('.error-message').style.display = 'block';
-                  });
-              });
-          </script>
-          
+            </div>
+              <script>
+                document.querySelector('.php-email-form').addEventListener('submit', function(event) {
+                    event.preventDefault(); // Prevenir el comportamiento por defecto del formulario
+                    var form = this;
+                
+                    // Mostrar el mensaje de carga
+                    document.querySelector('.loading').style.display = 'block';
+                
+                    // Enviar el formulario usando fetch
+                    fetch(form.action, {
+                        method: form.method,
+                        body: new FormData(form),
+                    })
+                    .then(function(response) {
+                        // Ocultar el mensaje de carga
+                        document.querySelector('.loading').style.display = 'none';
+                        
+                        // Mostrar el mensaje de éxito
+                        if (response.ok) {
+                            document.querySelector('.sent-message').style.display = 'block';
+                
+                            // Redirigir o refrescar la página después de un breve retraso
+                            setTimeout(function() {
+                                window.location.reload();
+                            }, 2000); // Esperar 2 segundos antes de refrescar
+                        } else {
+                            document.querySelector('.error-message').style.display = 'block';
+                        }
+                    })
+                    .catch(function(error) {
+                        // Ocultar el mensaje de carga y mostrar el mensaje de error
+                        document.querySelector('.loading').style.display = 'none';
+                        document.querySelector('.error-message').style.display = 'block';
+                    });
+                });
+                </script>
                 
               
             
