@@ -814,11 +814,12 @@ Te ayudamos con:
                 <p>+5491138833433</p>
               </div>
             </div>
+
             <div class="form">
               <form action="https://formsubmit.co/planexia.sa@gmail.com" method="POST" role="form" class="php-email-form">
                   <input type="hidden" name="_captcha" value="false">
                   <input type="hidden" name="_next" value="https://rpruiz33.github.io/planexia2.0/">
-                  
+                  <input type="hidden" name="_template" value="table">
                   <div class="row">
                       <div class="form-group col-lg-6">
                           <input type="text" name="name" class="form-control" id="name" placeholder="Su nombre" required>
@@ -848,25 +849,13 @@ Te ayudamos con:
                   event.preventDefault(); // Prevenir el comportamiento por defecto del formulario
                   var form = this;
           
-                  // Obtener la fecha y hora actuales en UTC
+                  // Obtener la fecha y hora actuales ajustadas a la zona horaria de Argentina
                   var now = new Date();
+                  var argentinaTimeOffset = -3; // Argentina está en UTC-3
+                  now.setHours(now.getHours() + argentinaTimeOffset);
           
-                  // Calcular la hora de Buenos Aires (UTC-3)
-                  var buenosAiresOffset = -3 * 60; // Offset en minutos
-                  var buenosAiresTime = new Date(now.getTime() + buenosAiresOffset * 60 * 1000);
-          
-                  // Formatear la fecha y hora en Buenos Aires
-                  var options = { 
-                      weekday: 'long', 
-                      year: 'numeric', 
-                      month: 'short', 
-                      day: 'numeric', 
-                      hour: 'numeric', 
-                      minute: 'numeric', 
-                      second: 'numeric', 
-                      timeZone: 'America/Argentina/Buenos_Aires' 
-                  };
-                  var formattedDate = buenosAiresTime.toLocaleDateString('es-AR', options);
+                  // Formatear la fecha y hora
+                  var formattedDate = now.toISOString().slice(0, 19).replace("T", " ");
           
                   // Crear un campo oculto para la fecha y hora ajustadas
                   var hiddenInput = document.createElement('input');
@@ -906,7 +895,6 @@ Te ayudamos con:
                   });
               });
           </script>
-          
           
                 
               
