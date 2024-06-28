@@ -845,19 +845,19 @@ Te ayudamos con:
                 </div>
               </form>
             </div>
-            
+          
             <script>
               document.querySelector('.php-email-form').addEventListener('submit', function(event) {
                 event.preventDefault(); // Prevenir el comportamiento por defecto del formulario
                 var form = this;
-            
-                // Establecer la fecha de envío en el campo oculto
-                var currentDate = new Date().toISOString();
+          
+                // Establecer la fecha de envío en el campo oculto usando el huso horario de Buenos Aires
+                var currentDate = moment().tz("America/Argentina/Buenos_Aires").format();
                 document.getElementById('send_date').value = currentDate;
-            
+          
                 // Mostrar el mensaje de carga
                 document.querySelector('.loading').style.display = 'block';
-            
+          
                 // Enviar el formulario usando fetch
                 fetch(form.action, {
                   method: form.method,
@@ -870,7 +870,7 @@ Te ayudamos con:
                   // Mostrar el mensaje de éxito
                   if (response.ok) {
                     document.querySelector('.sent-message').style.display = 'block';
-            
+          
                     // Redirigir o refrescar la página después de un breve retraso
                     setTimeout(function() {
                       window.location.reload();
@@ -980,7 +980,8 @@ Te ayudamos con:
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
- 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.34/moment-timezone-with-data.min.js"></script>
   <!-- <script>
     $(document).ready(function() {
       $("form.php-email-form").on("submit", function(event) {
