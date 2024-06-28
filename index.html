@@ -749,35 +749,100 @@ Te ayudamos con:
               </div>
             </div>
 
-            <div class="form">
-              <form action="https://formsubmit.co/planexia.sa@gmail.com" method="POST" role="form" class="php-email-form">
-                <input type="hidden" name="_captcha" value="false">
-                <input type="hidden" name="_next" value="https://rpruiz33.github.io/planexia2.0/">
-                
-                <div class="row">
-                  <div class="form-group col-lg-6">
-                    <input type="text" name="name" class="form-control" id="name" placeholder="Su nombre" required>
-                  </div>
-                  <div class="form-group col-lg-6 mt-3 mt-lg-0">
-                    <input type="email" class="form-control" name="email" id="email" placeholder="Su Email" required>
-                  </div>
+            <style>
+              .form {
+                max-width: 100%;
+                margin: 0 auto;
+                padding: 20px;
+                box-sizing: border-box;
+              }
+          
+              .form .row {
+                display: flex;
+                flex-wrap: wrap;
+                margin: 0 -10px;
+              }
+          
+              .form-group {
+                padding: 10px;
+                box-sizing: border-box;
+              }
+          
+              .col-lg-6 {
+                width: 100%;
+              }
+          
+              @media (min-width: 576px) {
+                .col-lg-6 {
+                  width: 50%;
+                }
+              }
+          
+              .form-control {
+                width: 100%;
+                padding: 10px;
+                margin: 5px 0;
+                box-sizing: border-box;
+              }
+          
+              .text-center {
+                text-align: center;
+              }
+          
+              .my-3 {
+                margin: 15px 0;
+              }
+          
+              .loading, .error-message, .sent-message {
+                display: none;
+                text-align: center;
+                padding: 10px;
+                margin: 10px 0;
+              }
+          
+              .loading {
+                color: blue;
+              }
+          
+              .error-message {
+                color: red;
+              }
+          
+              .sent-message {
+                color: green;
+              }
+            </style>
+          </head>
+          <body>
+          
+          <div class="form">
+            <form action="https://formsubmit.co/planexia.sa@gmail.com" method="POST" role="form" class="php-email-form">
+              <input type="hidden" name="_captcha" value="false">
+              <input type="hidden" name="_next" value="https://rpruiz33.github.io/planexia2.0/">
+              
+              <div class="row">
+                <div class="form-group col-lg-6">
+                  <input type="text" name="name" class="form-control" id="name" placeholder="Su nombre" required>
                 </div>
-                <div class="form-group mt-3">
-                  <input type="text" class="form-control" name="subject" id="subject" placeholder="Asunto" required>
+                <div class="form-group col-lg-6">
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Su Email" required>
                 </div>
-                <div class="form-group mt-3">
-                  <textarea class="form-control" name="message" rows="5" placeholder="mensaje" required></textarea>
-                </div>
-                <div class="my-3">
-                  <div class="loading" style="display:none;">Cargando</div>
-                  <div class="error-message" style="display:none;">Hubo un error, por favor intente de nuevo.</div>
-                  <div class="sent-message" style="display:none;">Su mensaje se envió con éxito. ¡Muchas gracias!</div>
-                </div>
-                <div class="text-center">
-                  <button type="submit" title="Send Message">Enviar mensaje</button>
-                </div>
-              </form>
-            </div>
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" name="subject" id="subject" placeholder="Asunto" required>
+              </div>
+              <div class="form-group">
+                <textarea class="form-control" name="message" rows="5" placeholder="mensaje" required></textarea>
+              </div>
+              <div class="my-3">
+                <div class="loading">Cargando</div>
+                <div class="error-message">Hubo un error, por favor intente de nuevo.</div>
+                <div class="sent-message">Su mensaje se envió con éxito. ¡Muchas gracias!</div>
+              </div>
+              <div class="text-center">
+                <button type="submit" title="Send Message">Enviar mensaje</button>
+              </div>
+            </form>
             
             <script>
             document.querySelector('.php-email-form').addEventListener('submit', async function(event) {
