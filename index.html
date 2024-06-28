@@ -726,18 +726,100 @@ Te ayudamos con:
         </div>
 
         <div class="row">
-
-          <div class="col-lg-6" style="margin: 0% 0%" >
+          <style>
+            .form {
+              max-width: 100%;
+              margin: 0 auto;
+              padding: 20px;
+              box-sizing: border-box;
+            }
+        
+            .form .row {
+              display: flex;
+              flex-wrap: wrap;
+              margin: 0 -10px;
+            }
+        
+            .form-group {
+              padding: 10px;
+              box-sizing: border-box;
+            }
+        
+            .col-lg-6 {
+              width: 100%;
+            }
+        
+            @media (min-width: 576px) {
+              .col-lg-6 {
+                width: 50%;
+              }
+            }
+        
+            .form-control {
+              width: 100%;
+              padding: 10px;
+              margin: 5px 0;
+              box-sizing: border-box;
+            }
+        
+            .text-center {
+              text-align: center;
+            }
+        
+            .my-3 {
+              margin: 15px 0;
+            }
+        
+            .loading, .error-message, .sent-message {
+              display: none;
+              text-align: center;
+              padding: 10px;
+              margin: 10px 0;
+            }
+        
+            .loading {
+              color: blue;
+            }
+        
+            .error-message {
+              color: red;
+            }
+        
+            .sent-message {
+              color: green;
+            }
+        
+            @media (min-width: 1440px) {
+              .form {
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-start;
+              }
+        
+              .php-email-form {
+                width: 48%;
+              }
+        
+              .map-container {
+                width: 48%;
+              }
+            }
+          </style>
+        </head>
+        <body>
+        
+        <div class="form">
+          <div class="map-container col-lg-6" style="margin: 0% 0%">
             <div class="map mb-4 mb-lg-0">
-              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d819.7552395165633!2d-58.39782363040097!3d-34.729866098306836!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bccd6858c66481%3A0x227c7501ef0bd286!2sEIC%2C%20Coronel%20Rauch%203314%2C%20B1824%20Remedios%20de%20Escalada%2C%20Provincia%20de%20Buenos%20Aires!5e0!3m2!1ses!2sar!4v1719352116576!5m2!1ses!2sar" width="411px" height="350px" style="border:0 ; margin: 0% -1%"     allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" ></iframe> 
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d819.7552395165633!2d-58.39782363040097!3d-34.729866098306836!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bccd6858c66481%3A0x227c7501ef0bd286!2sEIC%2C%20Coronel%20Rauch%203314%2C%20B1824%20Remedios%20de%20Escalada%2C%20Provincia%20de%20Buenos%20Aires!5e0!3m2!1ses!2sar!4v1719352116576!5m2!1ses!2sar" width="100%" height="350px" style="border:0; margin: 0% -1%" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
           </div>
-
-          <div class="col-lg-6">
+        
+          <div class="contact-info col-lg-6">
             <div class="row">
               <div class="col-md-5 info">
                 <i class="bi bi-geo-alt"></i>
-                <p>Buenos Aires , Lanus</p>
+                <p>Buenos Aires, Lanus</p>
               </div>
               <div class="col-md-4 info">
                 <i class="bi bi-envelope"></i>
@@ -748,74 +830,9 @@ Te ayudamos con:
                 <p>+5491138833433</p>
               </div>
             </div>
-
-            <style>
-              .form {
-                max-width: 100%;
-                margin: 0 auto;
-                padding: 20px;
-                box-sizing: border-box;
-              }
-          
-              .form .row {
-                display: flex;
-                flex-wrap: wrap;
-                margin: 0 -10px;
-              }
-          
-              .form-group {
-                padding: 10px;
-                box-sizing: border-box;
-              }
-          
-              .col-lg-6 {
-                width: 100%;
-              }
-          
-              @media (min-width: 576px) {
-                .col-lg-6 {
-                  width: 50%;
-                }
-              }
-          
-              .form-control {
-                width: 100%;
-                padding: 10px;
-                margin: 5px 0;
-                box-sizing: border-box;
-              }
-          
-              .text-center {
-                text-align: center;
-              }
-          
-              .my-3 {
-                margin: 15px 0;
-              }
-          
-              .loading, .error-message, .sent-message {
-                display: none;
-                text-align: center;
-                padding: 10px;
-                margin: 10px 0;
-              }
-          
-              .loading {
-                color: blue;
-              }
-          
-              .error-message {
-                color: red;
-              }
-          
-              .sent-message {
-                color: green;
-              }
-            </style>
-          </head>
-          <body>
-          
-          <div class="form">
+          </div>
+        
+          <div class="php-email-form col-lg-6">
             <form action="https://formsubmit.co/planexia.sa@gmail.com" method="POST" role="form" class="php-email-form">
               <input type="hidden" name="_captcha" value="false">
               <input type="hidden" name="_next" value="https://rpruiz33.github.io/planexia2.0/">
@@ -843,7 +860,8 @@ Te ayudamos con:
                 <button type="submit" title="Send Message">Enviar mensaje</button>
               </div>
             </form>
-            
+          </div>
+
             <script>
             document.querySelector('.php-email-form').addEventListener('submit', async function(event) {
               event.preventDefault(); // Prevenir el comportamiento por defecto del formulario
