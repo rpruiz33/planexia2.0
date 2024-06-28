@@ -750,10 +750,10 @@ Te ayudamos con:
             </div>
 
             <div class="form">
-              <form action="https://formsubmit.co/planexia.sa@gmail.com" method="POST" role="form" class="php-email-form" style="margin: 0% 0% 0% -95px;">
+              <form action="https://formsubmit.co/planexia.sa@gmail.com" method="POST" role="form" class="php-email-form">
                 <input type="hidden" name="_captcha" value="false">
-                <input type="hidden" name="_next" value="https://rpruiz33.github.io/planexia2.0/"> <!-- Opcional: URL de redirección después del envío -->
-            
+                <input type="hidden" name="_next" value="https://rpruiz33.github.io/planexia2.0/">
+                
                 <div class="row">
                   <div class="form-group col-lg-6">
                     <input type="text" name="name" class="form-control" id="name" placeholder="Su nombre" required>
@@ -769,50 +769,53 @@ Te ayudamos con:
                   <textarea class="form-control" name="message" rows="5" placeholder="mensaje" required></textarea>
                 </div>
                 <div class="my-3">
-                  <div class="loading">Cargando</div>
-                  <div class="error-message">Hubo un error, por favor intente de nuevo.</div>
-                  <div class="sent-message">Su mensaje se envío con éxito. ¡Muchas gracias!</div>
+                  <div class="loading" style="display:none;">Cargando</div>
+                  <div class="error-message" style="display:none;">Hubo un error, por favor intente de nuevo.</div>
+                  <div class="sent-message" style="display:none;">Su mensaje se envió con éxito. ¡Muchas gracias!</div>
                 </div>
                 <div class="text-center">
                   <button type="submit" title="Send Message">Enviar mensaje</button>
                 </div>
               </form>
-              <script>
-                document.querySelector('.php-email-form').addEventListener('submit', function(event) {
-                    event.preventDefault(); // Prevenir el comportamiento por defecto del formulario
-                    var form = this;
-                
-                    // Mostrar el mensaje de carga
-                    document.querySelector('.loading').style.display = 'block';
-                
-                    // Enviar el formulario usando fetch
-                    fetch(form.action, {
-                        method: form.method,
-                        body: new FormData(form),
-                    })
-                    .then(function(response) {
-                        // Ocultar el mensaje de carga
-                        document.querySelector('.loading').style.display = 'none';
-                        
-                        // Mostrar el mensaje de éxito
-                        if (response.ok) {
-                            document.querySelector('.sent-message').style.display = 'block';
-                
-                            // Redirigir o refrescar la página después de un breve retraso
-                            setTimeout(function() {
-                                window.location.reload();
-                            }, 2000); // Esperar 2 segundos antes de refrescar
-                        } else {
-                            document.querySelector('.error-message').style.display = 'block';
-                        }
-                    })
-                    .catch(function(error) {
-                        // Ocultar el mensaje de carga y mostrar el mensaje de error
-                        document.querySelector('.loading').style.display = 'none';
-                        document.querySelector('.error-message').style.display = 'block';
-                    });
+            </div>
+            
+            <script>
+            document.querySelector('.php-email-form').addEventListener('submit', async function(event) {
+              event.preventDefault(); // Prevenir el comportamiento por defecto del formulario
+              var form = this;
+              
+              // Mostrar el mensaje de carga
+              document.querySelector('.loading').style.display = 'block';
+              
+              try {
+                const response = await fetch(form.action, {
+                  method: form.method,
+                  body: new FormData(form),
                 });
-                </script>
+                
+                // Ocultar el mensaje de carga
+                document.querySelector('.loading').style.display = 'none';
+                
+                if (response.ok) {
+                  // Mostrar el mensaje de éxito
+                  document.querySelector('.sent-message').style.display = 'block';
+                  
+                  // Redirigir o refrescar la página después de un breve retraso
+                  setTimeout(function() {
+                    window.location.reload();
+                  }, 2000); // Esperar 2 segundos antes de refrescar
+                } else {
+                  // Mostrar el mensaje de error
+                  document.querySelector('.error-message').style.display = 'block';
+                }
+              } catch (error) {
+                // Ocultar el mensaje de carga y mostrar el mensaje de error
+                document.querySelector('.loading').style.display = 'none';
+                document.querySelector('.error-message').style.display = 'block';
+              }
+            });
+            </script>
+            
                 
               
             
