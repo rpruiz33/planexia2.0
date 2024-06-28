@@ -820,6 +820,7 @@ Te ayudamos con:
                 <input type="hidden" name="_captcha" value="false">
                 <input type="hidden" name="_next" value="https://rpruiz33.github.io/planexia2.0/">
                 <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="send_date" id="send_date"> <!-- Campo oculto para la fecha de envío -->
                 <div class="row">
                   <div class="form-group col-lg-6">
                     <input type="text" name="name" class="form-control" id="name" placeholder="Su nombre" required>
@@ -844,43 +845,48 @@ Te ayudamos con:
                 </div>
               </form>
             </div>
-              <script>
-                document.querySelector('.php-email-form').addEventListener('submit', function(event) {
-                    event.preventDefault(); // Prevenir el comportamiento por defecto del formulario
-                    var form = this;
-                
-                    // Mostrar el mensaje de carga
-                    document.querySelector('.loading').style.display = 'block';
-                
-                    // Enviar el formulario usando fetch
-                    fetch(form.action, {
-                        method: form.method,
-                        body: new FormData(form),
-                    })
-                    .then(function(response) {
-                        // Ocultar el mensaje de carga
-                        document.querySelector('.loading').style.display = 'none';
-                        
-                        // Mostrar el mensaje de éxito
-                        if (response.ok) {
-                            document.querySelector('.sent-message').style.display = 'block';
-                
-                            // Redirigir o refrescar la página después de un breve retraso
-                            setTimeout(function() {
-                                window.location.reload();
-                            }, 0); // Esperar 2 segundos antes de refrescar
-                        } else {
-                            document.querySelector('.error-message').style.display = 'block';
-                        }
-                    })
-                    .catch(function(error) {
-                        // Ocultar el mensaje de carga y mostrar el mensaje de error
-                        document.querySelector('.loading').style.display = 'none';
-                        document.querySelector('.error-message').style.display = 'block';
-                    });
+            
+            <script>
+              document.querySelector('.php-email-form').addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevenir el comportamiento por defecto del formulario
+                var form = this;
+            
+                // Establecer la fecha de envío en el campo oculto
+                var currentDate = new Date().toISOString();
+                document.getElementById('send_date').value = currentDate;
+            
+                // Mostrar el mensaje de carga
+                document.querySelector('.loading').style.display = 'block';
+            
+                // Enviar el formulario usando fetch
+                fetch(form.action, {
+                  method: form.method,
+                  body: new FormData(form),
+                })
+                .then(function(response) {
+                  // Ocultar el mensaje de carga
+                  document.querySelector('.loading').style.display = 'none';
+                  
+                  // Mostrar el mensaje de éxito
+                  if (response.ok) {
+                    document.querySelector('.sent-message').style.display = 'block';
+            
+                    // Redirigir o refrescar la página después de un breve retraso
+                    setTimeout(function() {
+                      window.location.reload();
+                    }, 2000); // Esperar 2 segundos antes de refrescar
+                  } else {
+                    document.querySelector('.error-message').style.display = 'block';
+                  }
+                })
+                .catch(function(error) {
+                  // Ocultar el mensaje de carga y mostrar el mensaje de error
+                  document.querySelector('.loading').style.display = 'none';
+                  document.querySelector('.error-message').style.display = 'block';
                 });
-                </script>
-                
+              });
+            </script>
+            
               
             
               
